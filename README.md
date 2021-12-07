@@ -1,6 +1,6 @@
 # RentalProject
 
-A car rental project developed with C# and .Net Core Framework. In development phase, N-Layered Architecture model was followed. You can perform basic CRUD operations with this program. Also, this program has JWT Bearer system. CRUD operaitons will work if the user has right claims.
+The project was developed in C#, in accordance with the multi-layered architecture and SOLID principles. CRUD operations were performed using the Entity Framework. MSSQL Localdb was used for database in the project. This system includes authentication and authorization. Users can only perform transactions for which they are authorized. Implementations of JWT; Transaction, Cache, Validation and Performance aspects have been implemented. Fluent Validation support for Validation, Autofac support for IoC added. The project includes CRUD operations for car, brand, color, car images, user, operations claim, user operation claims, customer, credit card and rental. Car rental is carried out according to certain business rules. In addition, findeks scores increase according to the users' car rentals. Each car has its own findeks score. The user must have enough Findeks points to rent a car.
 
 # Layers
 - Core : The core layer of the project is used for universal operations.
