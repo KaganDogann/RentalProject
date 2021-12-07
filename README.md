@@ -9,8 +9,8 @@ Entities: Our tables in the database have been created as objects in our project
 Business : It is the business layer of our project. Various business rules; Data controls, validations and authorization controls
 WebAPI : It is the Restful API Layer of the project. Known methods: Get, Post, Put, Delete
 # Used Technologies
-.Net Core 3.1
-Restful API
+- .Net Core 3.1
+- Restful API
 Result Types
 Interceptor
 Autofac
