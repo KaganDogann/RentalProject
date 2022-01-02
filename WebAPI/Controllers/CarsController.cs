@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         [HttpPost("Add")]
         public IActionResult Add(Car car)
         {
-            var result=_carService.Add(car);
+            var result = _carService.Add(car);
             if (result.Success)
             {
                 return Ok(result);
@@ -104,5 +104,29 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
+        [HttpGet("GetCardetailsByCarId")]
+        public IActionResult GetCarDetailsByCarId(int carId)
+        {
+            var result = _carService.GetCarDetailsByCarId(carId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+
+        }
+        [HttpGet("GetCarDetailsByColorAndByBrand")]
+        public IActionResult GetCarDetailsByColorAndByBrand(int colorId, int brandId)
+        {
+
+            var result = _carService.GetCarDetailsByColorAndByBrand(colorId, brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+
+        }
     }
 }
