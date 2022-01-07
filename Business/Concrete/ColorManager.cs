@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants.Messages;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
@@ -26,10 +27,10 @@ namespace Business.Concrete
             IResult result = BusinessRules.Run(CheckIfColorNameExist(color.ColorName));
             if (result!=null)
             {
-                return new ErrorResult();
+                return new ErrorResult(ColorMessages.ColorNotAdded);
             }
             _ColorDal.Add(color);
-            return new SuccessResult();
+            return new SuccessResult(ColorMessages.ColorAdded);
         }
 
         public IResult Delete(Color color)

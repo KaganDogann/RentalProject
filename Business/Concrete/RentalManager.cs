@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,12 +21,9 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            if (rental.ReturnDate==null)
-            {
-                _rentalDal.Add(rental);
-                return new SuccessResult();
-            }
-            return new ErrorResult();
+            _rentalDal.Add(rental);
+            return new SuccessResult();
+           
         }
 
         public IResult Delete(Rental rental)
@@ -52,6 +50,26 @@ namespace Business.Concrete
         public IDataResult<List<RentalDetailDto>> GetRentalsDetails()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
+        }
+
+        public IResult IsCarAvaible(int carId)
+        {
+            IResult result = BusinessRules.Run(IsCarAvaibleForRent(carId));
+            if (result!=null)
+            {
+                return new ErrorResult("Araç belirtilen aralıkta uygun değil.");
+            }
+            return new SuccessResult("Belirtilen tarihte araç durumu müsait");
+        }
+
+        private IResult IsCarAvaibleForRent(int carId)
+        {
+            var result=_rentalDal.GetAll(r => r.CarId == carId).Any();
+            if (result)
+            {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
         }
     }
 }
