@@ -22,6 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.BrandId
                              join co in context.Colors
                              on c.ColorId equals co.ColorId
+                             
                              select new CarDetailDto
                              {
                                  CarId = c.CarId,
@@ -32,7 +33,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandId = b.BrandId,
                                  ModelName = c.ModelName,
                                  ColorId = co.ColorId,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 ImagePath = (from m in context.CarImages where m.CarId == c.CarId select m.ImagePath).FirstOrDefault()
                              };
                 return result.ToList();
             }
@@ -58,7 +60,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandId = b.BrandId,
                                  ModelName = c.ModelName,
                                  ColorId = co.ColorId,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 ImagePath = (from m in context.CarImages where m.CarId == c.CarId select m.ImagePath).FirstOrDefault()
                              };
                 return result.ToList();
             }
@@ -84,7 +87,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandId = b.BrandId,
                                  ModelName = c.ModelName,
                                  ColorId = co.ColorId,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 ImagePath = (from m in context.CarImages where m.CarId == c.CarId select m.ImagePath).FirstOrDefault()
                              };
                 return result.ToList();
             }
@@ -110,7 +114,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandId = b.BrandId,
                                  ModelName = c.ModelName,
                                  ColorId = co.ColorId,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 ImagePath = (from m in context.CarImages where m.CarId == c.CarId select m.ImagePath).FirstOrDefault()
                              };
                 return result.ToList();
             }
@@ -136,7 +141,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  BrandId = b.BrandId,
                                  ModelName = c.ModelName,
                                  ColorId = co.ColorId,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 ImagePath = (from m in context.CarImages where m.CarId == c.CarId select m.ImagePath).FirstOrDefault()
                              };
                 return result.ToList();
             }

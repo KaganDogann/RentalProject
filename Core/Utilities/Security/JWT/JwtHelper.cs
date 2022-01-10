@@ -32,7 +32,7 @@ namespace Core.Utilities.Security.JWT
             var jwt = CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var token = jwtSecurityTokenHandler.WriteToken(jwt);//Token'ı yazdırmış oldum WriteToken(jwt)=> string e çevirdik
-
+            
             return new AccessToken
             {
                 Token = token,

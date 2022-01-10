@@ -15,9 +15,11 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        public RentalManager(IRentalDal rentalDal)
+        ICarDal _carDal;
+        public RentalManager(IRentalDal rentalDal,ICarDal carDal)
         {
             _rentalDal = rentalDal;
+            _carDal = carDal;
         }
         public IResult Add(Rental rental)
         {
@@ -70,6 +72,22 @@ namespace Business.Concrete
                 return new ErrorResult();
             }
             return new SuccessResult();
+        }
+
+        public List<int> CalculateTotalPrice(DateTime rentDate, DateTime returnDate, int carId)
+        {
+            List<int> totalAmount = new List<int>();
+            var dateDifference = (returnDate - rentDate).Days;
+            //var datesOfDifference = dateDifference.Days;
+            var dailyCarPrice = decimal.ToInt32(_carDal.Get(c => c.CarId == carId).DailyPrice); 
+           
+            var totalPrice = dateDifference * dailyCarPrice;
+
+            totalAmount.Add(dateDifference);
+            totalAmount.Add(totalPrice);
+
+            
+            return totalAmount;
         }
     }
 }
