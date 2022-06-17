@@ -1,5 +1,5 @@
 # RentalProject
-- (Proje verilen ödevlere göre bitmiş durumda, fakat vaktim olursa biraz daha geliştirmeyi düşünüyorum. Kodlama.io'ya teşekkürler.)
+- (Proje verilen ödevlere göre bitmiş durumda, fakat vaktim olursa biraz daha geliştirmeyi düşünüyorum.)
 The project was developed in C#, in accordance with the multi-layered architecture and SOLID principles. CRUD operations were performed using the Entity Framework. MSSQL Localdb was used for database in the project. This system includes authentication and authorization. Users can only perform transactions for which they are authorized. Implementations of JWT; Transaction, Cache, Validation and Performance aspects have been implemented. Fluent Validation support for Validation, Autofac support for IoC added. The project includes CRUD operations for car, brand, color, car images, user, operations claim, user operation claims, customer, credit card and rental. Car rental is carried out according to certain business rules. In addition, findeks scores increase according to the users' car rentals. Each car has its own findeks score. The user must have enough Findeks points to rent a car.
 
 # Layers
